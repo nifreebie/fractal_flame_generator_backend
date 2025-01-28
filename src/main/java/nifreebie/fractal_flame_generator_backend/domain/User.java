@@ -2,6 +2,9 @@ package nifreebie.fractal_flame_generator_backend.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -22,4 +25,10 @@ public class User {
 
     @Column
     private String password;
+
+    @Column
+    private String email;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Image> images = new ArrayList<>();
 }
